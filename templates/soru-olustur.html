@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+     <div class="container-div-form">
+     <form method="POST">
+          {% csrf_token %}
+
+          <h2 class="kullanici_adi_h2">Kullanıcı Adı </h2>
+          <input type="text" name="username"  placeholder="username">
+          <input  type="text" name="kullanici" placeholder="kullanici">
+          <select name="kategori" id="kategori">
+            {% for kategori in kategoriler %}
+                <option value="{{ kategori.id }}">{{ kategori.kategori }}</option>
+            {% endfor %}
+          </select>
+          <br>
+          <h2 class="ne_sormak_istersiniz_h2">Ne Sormak İstersiniz ?</h2>
+          <textarea name="soru" placeholder="soru"></textarea>
+          <br>
+          <div class="d-flex-isAnonim">
+               <input type="checkbox" name="isAnonim" class="check_box_anonim" checked>
+               <p>Anonim olarak sormak istiyorum.</p>
+          </div>
+          <br> 
+          
+          <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+          <button type="submit" class="submit_button"> GÖNDER </button>
+
+     <p>
+           {{ text }}
+     </p>
+     
+     </form>
+     </div>
+
+
+     <br>
+
+{% endblock content %}

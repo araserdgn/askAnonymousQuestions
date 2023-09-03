@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% load static  %}
+
+{% block content %}
+
+     <div class="container-div-form mt-5 mb-5">
+          <form method="post">
+               {% csrf_token %}
+               
+               <h2 style="color:white;">Admin Kullanıcısı </h2>
+               {% comment %} <input type="text" name="username" id="" placeholder="Admin Username">
+               <input type="text" name="kullanici" placeholder="Kullanici"> {% endcomment %}
+               <br>
+               
+               <h2 style="color:white;">Cevabınızı Yazın </h2>
+               <textarea wrap autofocus name="cevap" id="" cols="30" rows="10"></textarea>
+               <br>
+               <button type="submit">GÖNDER</button>
+     
+          </form>
+     </div>
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% load static  %}
+
+{% block content %}
+
+    {% comment %} {% if messages %}
+        {% for message in messages %}
+                <div class="alert alert-{{message.tags}} text-center">
+                    {{message}}
+                </div>
+        {% endfor %}
+    {% else %}
+    {% endif %} {% endcomment %}
+
+    <main>
+        <div class="main">
+            <div class="login">
+                <form method="POST">
+                    {% csrf_token %}
+                    <label for="chk" aria-hidden="true">LOGIN</label>
+                    <input type="text" name="kullanici" placeholder="Username" required="">
+                    <input class="mt-3" type="password" name="sifre" placeholder="Password" required="">
+                    <p class="parolaLink">
+                        <a href="#">Forgot password?</a>
+                    </p>
+                    <button class="registerButton" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+{% endblock content %}

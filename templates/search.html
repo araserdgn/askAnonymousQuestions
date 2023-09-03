@@ -1,0 +1,118 @@
+{% extends "index.html" %}
+
+{% load static  %}
+
+{% block content %}
+
+
+<div class="container-category-name">
+          <div class="container-text-category-name">
+               <h2>ASK ANONYMOUS</h2>
+              <p>
+               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore, excepturi odio. Laborum repellat voluptatum voluptatem commodi rem non minima voluptas veniam officiis aperiam. Voluptatum laboriosam ipsam, voluptatem repellendus explicabo ut?
+              </p>
+          </div>
+     </div>
+
+
+
+     <hr style="margin:0; padding:0; border:0; width:100%; height:8px; background-color:gray;">
+
+
+
+     <div class="container-questions-div">
+
+          <div class="container-quick-div containers-w-25">
+               
+               <div class="check-another-menu">
+                    <ul>
+                         <li><a href="{% url 'index' %}"> <i class="fa-solid fa-house-chimney margin-right-5"></i> Home</a></li>
+                         <li><a href="{% url 'about' %}"> <i class="fa-solid fa-user margin-right-5"></i> About Us</a></li>
+                         <li><a href="{% url 'iletisim' %}"> <i class="fa-solid fa-globe margin-right-5"></i> Contact</a></li>
+                         <li><a href="{% url 'iletisim' %}"> <i class="fa-solid fa-life-ring margin-right-5"></i> Help</a></li>
+                    </ul>
+               </div>
+
+          </div>
+
+          <div class="container-asking-question containers-w-50">
+
+               {% for soruList in arama %}
+               <hr style="width:100%; height:2px; border:0px; background-color:rgb(38, 38, 38); ">
+               <div class="ask-question-container-div" style="position:relative;">
+                    <div class="profil-picture-and-user-nick-container-div" style="position:relative;">
+                         <div class="d-flex-container">
+                             <div class="profil-picture-container-div">
+                             </div>
+                             <h3 style="color:black;">
+                              {{ soruList.username }}
+                             </h3>
+                         </div>
+                    </div>
+
+                    <div class="user-text-input-container-div">
+                         <p class="paragraf">
+                              {{ soruList.soru }}
+                         </p>
+                         <p>{{soruList.category}}</p>
+                    </div>
+
+                    <div class="user-submit-buttons-container-div">
+                         <div class="d-flex-container button-containers">
+
+                           <button type="button" >
+                              {% if user.is_staff %}
+                               <a href="{% url 'create_answer' %}">CEVAPLA</a>
+                              {% else %}
+                              YETERSİZ YETKİ
+                              {% endif %} 
+                           </button>   
+                            
+                         </div>
+                    </div>
+
+                    {% if cevaplar|length > 0 %}
+                    <div class="show-the-answer-visibility-container-div">
+                    <hr class="show-answers-hr">
+                       {% for cevaps in cevaplar %}
+
+                       {% if cevaps.sorular == soruList %}
+                    <h4 style="text-transform: uppercase;">{{ request.user }}</h4>
+                    <p style="font-size:larger; font-weight:bolder;"> {{cevaps.cevap}} </p>
+
+                       {% elif cevaps.sorular == '' %}
+                         <h6>Cevap Bulunmamaktadır.</h6>
+                    
+
+                     <hr style="width:100%; left:0; height:4px; background-color:rgb(38, 38, 38); border:0; padding:0; margin:0;">
+
+                        {% endif %}
+               
+                       {% endfor %}
+
+                    </div>
+      
+                    {% elif cevaplar|length == 0 %}
+                    <h4 style="text-align:right; color:black;">Cevap Bulunmamaktadır.</h4>
+                    {% endif %}
+
+
+               </div>
+               <!-- <div>
+                    <pre>Henüz soru yok.</pre>
+               </div>                -->
+               {% endfor %}
+          </div>
+
+          <div class="container-another-categories containers-w-25">
+               <h2>Other Categories</h2>
+                <ul>
+                {% for kategori in kategoriler  %}
+                    <li><a href="{% url 'sorular' %}">{{kategori.kategori}}</a></li>
+                {% endfor %}
+                </ul>
+
+          </div>
+     </div>
+     <script src="{% static 'script2.js' %}"></script>
+{% endblock content %}

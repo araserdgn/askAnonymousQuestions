@@ -1,0 +1,50 @@
+{% extends "index.html" %} 
+{% load static %} 
+{% block content %}
+<div class="container-fluid">
+  
+
+  <div class="container container-edit-profile mt-5">
+  
+  {% for profil in profiller %}
+    <div class="container-edit-successfully-result">
+      <div class="preview-text-container-successfully-result">
+        <h3>
+          <span></span>
+          <span></span>
+          PREVIEW
+          <span></span>
+          <span></span>
+        </h3>
+      </div>
+
+      <div class="preview-profil-photo-container-successfully-result">
+        {% if profil.resim %}
+        <div class="profil-photo-container-successfully-result">
+          <img src="{{profil.resim.url}}" alt="" class="w-100" />
+        </div>
+        {% else %}
+        <div class="profil-photo-container-successfully-result">
+          <p>Resim Yok</p>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="user-info-container-successfully-result">
+        <div class="name-surname-container-successfully-result">
+          <h3>Kullanıcı ismi : {{profil.isim}}</h3>
+        </div>
+
+        <div class="explanation-container-successfully-result">
+          <p>Kullanıcı nickname: {{profil.nickname}}</p>
+          <p>Kullanıcı email: {{profil.email}}</p>
+          <a class="btn btn-danger" href="{% url 'profil_update' %}">Profil Düzenle</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+          
+
+  </div>
+</div>
+  {% endblock content %}

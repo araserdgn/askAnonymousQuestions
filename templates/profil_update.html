@@ -1,0 +1,46 @@
+{% extends "index.html" %} 
+{% load static %} 
+
+{% block content %}
+<div class="container-fluid">
+  
+
+  <div class="container container-edit-profile mt-5">
+      <!-- <hr style="margin:0; padding:0; width:55%; border:0; height:3px; background-color:gray; border-radius:5px;"> -->
+
+      <div class="container-edit-profile-inputs-and-more">
+        <div class="div-flex-container-edit-profile mt-5">
+          <form
+            action=""
+            method="POST"
+            enctype="multipart/form-data"
+            class="w-50 m-auto"
+          >
+            {% csrf_token %} 
+                    <div class="form-group">
+                          <label for="{{ form.nickname.id_for_label }}" style="color:white; font-weight:bolder; font-size:larger; margin-bottom:5px;">Nickname </label>
+                          {{ form.nickname }}
+                    </div>
+                    <div class="form-group">
+                          <label for="{{ form.isim.id_for_label }}" style="color:white; font-weight:bolder; font-size:larger;">İsim </label>
+                          {{ form.isim }}
+                    </div>
+                    <div class="form-group">
+                          <label for="{{ form.email.id_for_label }}" style="color:white; font-weight:bolder; font-size:larger;">Email </label>
+                          {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                          <label for="{{ form.nickname.id_for_label }}" style="color:white; font-weight:bolder; font-size:larger;">Nickname </label>
+                          {{ form.resim }}
+                    </div>
+            <input type="submit" value="Güncelle" class="btn btn-primary mt-2" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+  {% endblock content %}

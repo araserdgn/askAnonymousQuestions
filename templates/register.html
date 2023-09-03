@@ -1,0 +1,121 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+
+     <div class="container mt-3">
+          {% if messages %}
+               {% for message in messages %}
+                         <div class="alert alert-{{message.tags}} text-center">
+                              {{message}}
+                         </div>
+               {% endfor %}
+          {% else %}
+          {% endif %}
+     </div>
+     <div class="container-register mt-5">
+          <video src="video/aurora_borealis_-_74183 (720p).mp4" width="100%" autoplay muted loop ></video>
+          <div class="backgroundLG">
+          </div>
+          <div class="text-div-logoAN">
+             <h2> CREATE ACCOUNT </h2>
+          </div>
+          <div class="form-container-register">
+
+               <div class="formDiv">
+                    <form action="" method='POST'>
+                         {% csrf_token %}
+                         <input data-aos="zoom-in" data-aos-delay="1500" type="text" name="kullanici" placeholder="Name">
+                         <input type="text" data-aos="zoom-in" data-aos-delay="1900" name="email" placeholder="examples@gmail.com">
+                         <br>
+                         <input type="password" data-aos="zoom-in" name="sifre" data-aos-delay="2100" placeholder="Password" >
+                         <input type="password" data-aos="zoom-in" name="sifre2" data-aos-delay="2300" placeholder="Repeat Password" >
+                         <div class="form-checkbox-div">
+                              <input data-aos="zoom-in" data-aos-delay="2500"  class="form-checkbox-class"    type="checkbox" name="" id="">
+                              <p data-aos="zoom-in"> <a href="#">Sözleşme ve Aydınlatma Metni</a>'ni okuyup anladığımı kabul ediyorum.</p>
+                         </div>
+
+                         <input type="submit" class="registerButton" data-aos="zoom-in" value="Register">
+                         <br>
+                         <a href="#" class="dyhac-div" data-aos="zoom-in">Do you have an account ?</a>    
+                    </form>
+               </div>
+               <div class="information-ad-register" id="informationRegisterAd">
+                <div class="information-ad-register-container">
+                    <div class="information-ad-register-text-container">
+                        <h2>BOOST YOURSELF <i class="fa-solid fa-angles-right"></i> </h2>
+                    </div>
+
+                    <div class="information-ad-register-bg-container">     
+                       <h2>Logo Gelecek</h2>
+                    </div>
+
+                </div>
+                  
+               </div>
+          </div>
+
+     </div>
+
+     <div class="scrollAnimDiv">
+          <i class="fa-solid fa-chevron-down scrollRegister"></i>
+          <i class="fa-solid fa-chevron-down scrollRegister"></i>
+          <i class="fa-solid fa-chevron-down scrollRegister"></i>
+     </div>
+
+     <div class="register-page-choose-plan-container">
+          <div class="container-rpcpc-card-flex">
+               <div class="rpcpc-card">
+              
+
+                    <div class="text-container-rpcpc-card">
+                         <h2 class="icon-text-h2-register"> <i class="fa-solid fa-user"></i> </h2>
+                    </div>
+     
+                    <div class="counting-number-container-register">
+                         <h3 data-val="867" class="numValue">+ 12252</h3>
+                    </div>
+      
+                    <div class="text-descrition-rpcpc-register">
+                        <h3>USERS</h3>
+                    </div>
+                    
+          </div>
+
+          <div class="rpcpc-card">
+              
+
+               <div class="text-container-rpcpc-card">
+                    <h2 class="icon-text-h2-register"> <i class="fa-solid fa-circle-question"></i> </h2>
+               </div>
+
+               <div class="counting-number-container-register">
+                    <h3 data-val="2230" class="numValue">+ 82906</h3>
+               </div>
+ 
+               <div class="text-descrition-rpcpc-register">
+                   <h3>QUESTION ASK </h3>
+               </div>
+               
+     </div>
+
+     <div class="rpcpc-card">
+              
+
+          <div class="text-container-rpcpc-card">
+               <h2 class="icon-text-h2-register"> <i class="fa-solid fa-users"></i> </h2>
+          </div>
+
+          <div class="counting-number-container-register">
+               <h3 data-val="52" class="numValue">+ 234</h3>
+          </div>
+
+          <div class="text-descrition-rpcpc-register">
+              <h3>SOCIAL GROUP</h3>
+          </div>
+          
+     </div>
+
+{% endblock content %}
+        

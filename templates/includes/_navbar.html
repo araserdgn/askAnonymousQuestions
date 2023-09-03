@@ -1,0 +1,49 @@
+<nav class="navbar stick navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="/static/img/logo.png" alt=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link "href="{% url 'index' %}">Anasayfa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link "href="{% url 'sorular' %}">Sorular</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">Hakkımızda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href ="{% url 'iletisim' %}">İletişim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href ="{% url 'create_ask' %}">Sorunu Sor</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="{% url 'profil'  %}">{{ request.user }}</a>
+                    </li>
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profil_update'  %}">Profil Düzenle</a>
+                    </li> {% endcomment %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Çıkış Yap</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Giriş Yap</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Kayıt Ol</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
